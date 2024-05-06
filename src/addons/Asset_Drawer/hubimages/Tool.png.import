@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cudku8p2ruen1"
-path="res://.godot/imported/FloatingWindow.png-3a75edc30ffea075fac79bb37b21b6d1.ctex"
+uid="uid://dykp46el3k82s"
+path="res://.godot/imported/Tool.png-ae718bb913e88cb7d06ddc9f501a5466.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hubimages/FloatingWindow.png"
-dest_files=["res://.godot/imported/FloatingWindow.png-3a75edc30ffea075fac79bb37b21b6d1.ctex"]
+source_file="res://src/addons/Asset_Drawer/hubimages/Tool.png"
+dest_files=["res://.godot/imported/Tool.png-ae718bb913e88cb7d06ddc9f501a5466.ctex"]
 
 [params]
 

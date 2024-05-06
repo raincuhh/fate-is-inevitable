@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t3eg2ashwqeb"
-path="res://.godot/imported/DockedDefault.png-cf025df931616710f2af374fd5ea10bc.ctex"
+uid="uid://1vqp0w4d7ihh"
+path="res://.godot/imported/BottomDock.png-ee4a9232c791e3663eb0b14e1c1009bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hubimages/DockedDefault.png"
-dest_files=["res://.godot/imported/DockedDefault.png-cf025df931616710f2af374fd5ea10bc.ctex"]
+source_file="res://src/addons/Asset_Drawer/hubimages/BottomDock.png"
+dest_files=["res://.godot/imported/BottomDock.png-ee4a9232c791e3663eb0b14e1c1009bc.ctex"]
 
 [params]
 

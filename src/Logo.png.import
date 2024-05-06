@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lhvfm2saxld8"
-path="res://.godot/imported/BottomDock2.png-406e8a58ac3deb1f4b7ae6dd714b9a22.ctex"
+uid="uid://cgqlvvhrtw85c"
+path="res://.godot/imported/Logo.png-93f41084164d9807592b0a2b01fe1f47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hubimages/BottomDock2.png"
-dest_files=["res://.godot/imported/BottomDock2.png-406e8a58ac3deb1f4b7ae6dd714b9a22.ctex"]
+source_file="res://src/Logo.png"
+dest_files=["res://.godot/imported/Logo.png-93f41084164d9807592b0a2b01fe1f47.ctex"]
 
 [params]
 

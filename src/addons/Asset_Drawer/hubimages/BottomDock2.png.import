@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gu6ty4y5x7su"
-path="res://.godot/imported/Tool.png-8924359dc01aee5206ad174f20340140.ctex"
+uid="uid://d4gbt13vco07r"
+path="res://.godot/imported/BottomDock2.png-d509e7de62b06a12c84caf9539fd3b25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hubimages/Tool.png"
-dest_files=["res://.godot/imported/Tool.png-8924359dc01aee5206ad174f20340140.ctex"]
+source_file="res://src/addons/Asset_Drawer/hubimages/BottomDock2.png"
+dest_files=["res://.godot/imported/BottomDock2.png-d509e7de62b06a12c84caf9539fd3b25.ctex"]
 
 [params]
 

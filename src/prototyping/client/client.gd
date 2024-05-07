@@ -10,5 +10,5 @@ func _ready():
 
 func _physics_process(delta):
 	if is_multiplayer_authority(): 
-		velocity = Input.get_vector("left","right","up","down") * 400
+		velocity = Input.get_vector("left","right","up","down") * 500
 	move_and_slide()

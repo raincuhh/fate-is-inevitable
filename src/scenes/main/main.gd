@@ -5,15 +5,26 @@ extends Node
 
 @export var player_instance: PackedScene
 
-const PORT = 7272
-var peer = ENetMultiplayerPeer.new()
+const port = 7272
+var peer
 # Called when the node enters the scene tree for the first time.
 
+
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("terminate"):
+		terminate_server()
+
+func terminate_server():
+	multiplayer.multiplayer_peer = null
+	print("terminated server")
+
 func _on_host_button_pressed():
-	peer.create_server(PORT)
+	peer = ENetMultiplayerPeer.new()
+	peer.create_server(port, 3)
 	
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(add_player)
+	multiplayer.peer_disconnected.connect(remove_player)
 	add_player()
 	
 	$CanvasLayer.hide()
@@ -22,7 +33,9 @@ func _on_host_button_pressed():
 	print("sucessfully created server")
 
 func _on_join_button_pressed():
-	peer.create_client("127.0.0.1", PORT)
+	peer = ENetMultiplayerPeer.new()
+	
+	peer.create_client("127.0.0.1", port)
 	multiplayer.multiplayer_peer = peer
 	$CanvasLayer.hide()
 
@@ -55,7 +68,7 @@ func upnp_setup():
 	assert(upnp.get_gateway() and upnp.get_gateway().is_valid_gateway(), \
 		"UPNP Invalid Gateway!")
 
-	var map_result = upnp.add_port_mapping(PORT)
+	var map_result = upnp.add_port_mapping(port)
 	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
 		"UPNP Port Mapping Failed! Error %s" % map_result)
 	

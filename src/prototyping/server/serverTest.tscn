@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhay41eyviafc"]
+
+[ext_resource type="Script" path="res://src/prototyping/server/serverTest.gd" id="1_5kjbr"]
+[ext_resource type="PackedScene" uid="uid://dbq2anaf3cyk1" path="res://src/prototyping/client/client.tscn" id="2_7lwe0"]
+
+[node name="ServerTest" type="Node"]
+script = ExtResource("1_5kjbr")
+player_instance = ExtResource("2_7lwe0")

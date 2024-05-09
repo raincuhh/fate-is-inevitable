@@ -1,11 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://rwhiswd2fivl"]
+[gd_scene load_steps=5 format=3 uid="uid://rwhiswd2fivl"]
 
 [ext_resource type="Script" path="res://src/scenes/main/main.gd" id="1_f64o0"]
 [ext_resource type="PackedScene" uid="uid://cipfue2c0q4fq" path="res://src/shaders/vignette/vignette.tscn" id="2_6t3rq"]
+[ext_resource type="PackedScene" uid="uid://cp4npuuxewybj" path="res://src/scenes/managers/debugManager/debugManager.tscn" id="3_4fynr"]
+[ext_resource type="PackedScene" uid="uid://cikndjh14e0f5" path="res://src/scenes/gameObjects/entities/player/player.tscn" id="3_88dtu"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" groups=["main"]]
 script = ExtResource("1_f64o0")
 
-[node name="vignette" parent="." instance=ExtResource("2_6t3rq")]
+[node name="Vignette" parent="." instance=ExtResource("2_6t3rq")]
+
+[node name="debugManager" parent="." instance=ExtResource("3_4fynr")]
+visible = false
 
 [node name="UiManager" type="Node" parent="."]
+
+[node name="Telegraph" type="Node2D" parent="."]
+
+[node name="Floor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("3_88dtu")]
+position = Vector2(319, 238)
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Foreground" type="Node2D" parent="."]
+visible = false

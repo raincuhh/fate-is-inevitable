@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7l1xdxggexab"]
+
+[ext_resource type="Script" path="res://src/ui/floatText.gd" id="1_dn1k3"]
+
+[node name="DamageFloatText" type="Marker2D"]
+script = ExtResource("1_dn1k3")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -7.0
+offset_right = 56.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

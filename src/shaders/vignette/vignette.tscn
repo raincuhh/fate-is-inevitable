@@ -8,7 +8,7 @@ shader_parameter/vignette_intensity = 0.295
 shader_parameter/vignette_opacity = 0.274
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
-[node name="vignette" type="CanvasLayer"]
+[node name="Vignette" type="CanvasLayer"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_y4svy")

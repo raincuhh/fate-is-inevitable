@@ -6,17 +6,16 @@ extends CharacterBody2D
 @onready var healthComponent = $HealthComponent
 @onready var inputManager = $InputManager
 @onready var dashManager = $DashManager
-
+#@onready var weapon = $Visuals/WeaponRoot/Weapon
 @onready var animationPlayer = $AnimationPlayer
 
 @onready var player = $"."
-@onready var body = $Visuals/body
+@onready var body = $Visuals/Body
 @onready var label = $Label
 
 var stateMachine: StateMachine = StateMachine.new()
 
-
-
+var main = null
 
 func _ready():
 	stateMachine.add_states(StateNormal)
@@ -25,6 +24,11 @@ func _ready():
 	print("states: %s" %stateMachine.states)
 	
 	healthComponent.connect("died", on_dead)
+	
+	main = NodeUtils.get_main()
+	var playerUi = main.get_node("PlayerUI")
+	playerUi.update()
+	
 	get_health_test()
 
 func _process(delta):
@@ -49,8 +53,8 @@ func StateNormal():
 		velocityComponent.decelerate()
 		animationPlayer.play("idle")
 	
-	if Input.is_action_just_pressed("dash"): #&& dashManager.canDash:
-		stateMachine.change_state(StateDash)
+	#if Input.is_action_just_pressed("dash"): #&& dashManager.canDash:
+	#	stateMachine.change_state(StateDash)
 
 func StateDash():
 	pass

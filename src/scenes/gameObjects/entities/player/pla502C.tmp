@@ -1,34 +1,35 @@
-[gd_scene load_steps=17 format=3 uid="uid://cikndjh14e0f5"]
+[gd_scene load_steps=18 format=3 uid="uid://cikndjh14e0f5"]
 
 [ext_resource type="Script" path="res://src/scenes/gameObjects/entities/player/player.gd" id="1_d3inn"]
-[ext_resource type="Texture2D" uid="uid://dae7pwn3jvcv2" path="res://src/media/gameObjects/entities/player/chompsIdlex32.png" id="2_lsg1i"]
+[ext_resource type="Texture2D" uid="uid://dtt44lwjb6s8y" path="res://src/media/entities/player/chompsRunningx32.png" id="2_lpbov"]
 [ext_resource type="PackedScene" uid="uid://bj4xanqj67b6g" path="res://src/components/healthComponent/healthComponent.tscn" id="2_thtjx"]
-[ext_resource type="Texture2D" uid="uid://dtt44lwjb6s8y" path="res://src/media/gameObjects/entities/player/chompsRunningx32.png" id="3_63bk2"]
 [ext_resource type="PackedScene" uid="uid://bllaqrtnddkw2" path="res://src/components/velocityComponent/velocityComponent.tscn" id="3_gutml"]
 [ext_resource type="PackedScene" uid="uid://0rjr8ud48to" path="res://src/scenes/managers/inputManager.tscn" id="3_opin7"]
+[ext_resource type="Texture2D" uid="uid://dae7pwn3jvcv2" path="res://src/media/entities/player/chompsIdlex32.png" id="3_u6pvu"]
 [ext_resource type="PackedScene" uid="uid://bfu3lcek2efj1" path="res://src/components/hurtBoxComponent/hurtboxComponent.tscn" id="3_wlw7m"]
 [ext_resource type="PackedScene" uid="uid://bm01ehreg60y0" path="res://src/components/entityShadowComponent/entityShadowComponent.tscn" id="4_y3iy7"]
 [ext_resource type="PackedScene" uid="uid://dvnd6weqfesau" path="res://src/components/playerDeathAnimationComponent/playerDeathAnimationComponent.tscn" id="6_rgck3"]
-[ext_resource type="PackedScene" uid="uid://ccvcrj0vc50e6" path="res://src/scenes/gameObjects/guns/weapon.tscn" id="9_pvr73"]
+[ext_resource type="Script" path="res://src/scenes/gameObjects/entities/player/WeaponRoot.gd" id="8_hqerm"]
+[ext_resource type="Texture2D" uid="uid://dt3sv4wewnlkw" path="res://src/media/gameObjects/guns/placeholder/placeholderGun.png" id="11_djeon"]
 
 [sub_resource type="Animation" id="Animation_upsin"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Body:texture")
+tracks/0/path = NodePath("Visuals/body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_lsg1i")]
+"values": [ExtResource("3_u6pvu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Body:frame")
+tracks/1/path = NodePath("Visuals/body:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -45,19 +46,19 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Body:texture")
+tracks/0/path = NodePath("Visuals/body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_lsg1i")]
+"values": [ExtResource("3_u6pvu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Body:frame")
+tracks/1/path = NodePath("Visuals/body:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -75,19 +76,19 @@ step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Body:texture")
+tracks/0/path = NodePath("Visuals/body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_63bk2")]
+"values": [ExtResource("2_lpbov")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Body:frame")
+tracks/1/path = NodePath("Visuals/body:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,17 +139,23 @@ visible = false
 
 [node name="Visuals" type="Node2D" parent="."]
 
-[node name="Body" type="Sprite2D" parent="Visuals"]
+[node name="body" type="Sprite2D" parent="Visuals"]
 z_index = 2
 position = Vector2(0, -16)
-texture = ExtResource("2_lsg1i")
+texture = ExtResource("3_u6pvu")
 hframes = 11
 
 [node name="WeaponRoot" type="Node2D" parent="Visuals"]
-position = Vector2(0, -8)
+position = Vector2(0, -7)
+script = ExtResource("8_hqerm")
 
-[node name="Weapon" parent="Visuals/WeaponRoot" node_paths=PackedStringArray("rootEntity") instance=ExtResource("9_pvr73")]
-rootEntity = NodePath("../../..")
+[node name="Weapon" type="Node2D" parent="Visuals/WeaponRoot"]
+visible = false
+
+[node name="WeaponSprite" type="Sprite2D" parent="Visuals/WeaponRoot/Weapon"]
+z_index = 2
+position = Vector2(10, -1)
+texture = ExtResource("11_djeon")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponent", "hurtboxCollision") instance=ExtResource("3_wlw7m")]
 visible = false
@@ -168,6 +175,7 @@ debug_color = Color(1, 1, 1, 0.42)
 metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -48.0
 offset_top = -56.0
 offset_right = -8.0

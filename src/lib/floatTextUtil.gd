@@ -1,6 +1,6 @@
-extends Node2D
+extends Node
 
-var floatText = load("res://src/ui/floatText.tscn")
+var floatText = load("res://src/scenes/ui/floatText/floatText.tscn")
 var main = null
 var mainForeground = null
 

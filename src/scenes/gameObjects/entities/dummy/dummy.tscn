@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://diamrke2ecwxk"]
+
+[node name="Dummy" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Visuals"]

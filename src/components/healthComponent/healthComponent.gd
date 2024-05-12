@@ -1,33 +1,45 @@
 class_name HealthComponent
 extends Node2D
 
-@export var maxHealth : int
-@export var damageFloat : bool
-@onready var floatingText = preload("res://src/ui/floatText.tscn")
+@export var maxHealth : int = 10
+@export var damageFloat : bool = true
 
-var health : int
+@onready var floatingText = preload("res://src/ui/floatText.tscn")
+@onready var healthComponent = $"."
+
+var currentHealth : int
+var hasDied: bool = false
 
 signal died
 
 func _ready():
-	health = maxHealth
+	init_health()
+
+func init_health():
+	currentHealth = maxHealth
 
 func get_health():
-	return health
+	return currentHealth
 
-func _process(_delta):
-	if health < 0:
-		health = 0
+func update_health():
+	if currentHealth < 0:
+		currentHealth = 0
 	
-	if health <= 0:
+	if currentHealth <= 0:
 		emit_signal("died")
-		health += 1 #for testing
+		currentHealth += 1 #for testing
 
-func damage(amount: int):
-	health = health - amount
-	if damageFloat:
-		#TODO, if an entity gets hit within a 0.5 scope, instead of making a new float, add it onto the current float amount
-		var floatingTextInstance = floatingText.instantiate()
-		floatingTextInstance.amount = amount
-		floatingTextInstance.type = "health"
-		add_child(floatingTextInstance)
+
+func damage(damage: int):
+	currentHealth -= damage
+	#if damageFloat:
+		#TODO, if an entity gets hit within a 0.5 scope, instead of making a new float, add it onto the current float damage
+	#	var floatingTextInstance = floatingText.instantiate()
+	#	floatingTextInstance.damage = amount
+	#	floatingTextInstance.position = healthComponent.global_position
+	#	var instancePos = floatingTextInstance.position
+	#	print(instancePos)
+	#	floatingTextInstance.spawnPosition = healthComponent.global_position
+	#	mainForeground.add_child(floatingTextInstance)
+	#	
+	update_health()

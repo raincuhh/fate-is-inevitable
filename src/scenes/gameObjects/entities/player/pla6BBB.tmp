@@ -1,65 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://cikndjh14e0f5"]
+[gd_scene load_steps=13 format=3 uid="uid://cikndjh14e0f5"]
 
 [ext_resource type="Script" path="res://src/scenes/gameObjects/entities/player/player.gd" id="1_d3inn"]
 [ext_resource type="Texture2D" uid="uid://bjdydf3b7gw8u" path="res://src/media/icon.svg" id="1_tnr52"]
 [ext_resource type="PackedScene" uid="uid://bj4xanqj67b6g" path="res://src/components/healthComponent/healthComponent.tscn" id="2_thtjx"]
-[ext_resource type="PackedScene" uid="uid://bllaqrtnddkw2" path="res://src/components/velocityComponent/velocityComponent.tscn" id="3_gutml"]
-[ext_resource type="PackedScene" uid="uid://0rjr8ud48to" path="res://src/scenes/managers/inputManager.tscn" id="3_opin7"]
+[ext_resource type="PackedScene" uid="uid://boxtks426ftdl" path="res://src/scenes/managers/playerInputManager.tscn" id="3_nti0u"]
 [ext_resource type="PackedScene" uid="uid://bfu3lcek2efj1" path="res://src/components/hurtBoxComponent/hurtboxComponent.tscn" id="3_wlw7m"]
 [ext_resource type="PackedScene" uid="uid://bm01ehreg60y0" path="res://src/components/entityShadowComponent/entityShadowComponent.tscn" id="4_y3iy7"]
 [ext_resource type="PackedScene" uid="uid://dvnd6weqfesau" path="res://src/components/playerDeathAnimationComponent/playerDeathAnimationComponent.tscn" id="6_rgck3"]
+[ext_resource type="Texture2D" uid="uid://di3ur5x3cimff" path="res://src/media/entities/player/placeholder/placeholder8Directionsx32.png" id="7_v3xvt"]
 [ext_resource type="Script" path="res://src/scenes/gameObjects/entities/player/WeaponRoot.gd" id="8_hqerm"]
-[ext_resource type="Texture2D" uid="uid://dtt44lwjb6s8y" path="res://src/media/entities/player/chompsx32.png" id="8_oc5tv"]
-[ext_resource type="Texture2D" uid="uid://dt3sv4wewnlkw" path="res://src/media/gameObjects/guns/placeholder/placeholderGun.png" id="11_djeon"]
-
-[sub_resource type="Animation" id="Animation_kdrnj"]
-resource_name = "run"
-length = 0.55
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-}
-
-[sub_resource type="Animation" id="Animation_t2yj1"]
-resource_name = "idle"
-length = 0.32
-loop_mode = 1
-step = 0.05
-
-[sub_resource type="Animation" id="Animation_8erag"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v53tf"]
-_data = {
-"RESET": SubResource("Animation_8erag"),
-"idle": SubResource("Animation_t2yj1"),
-"run": SubResource("Animation_kdrnj")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8fml"]
-size = Vector2(13, 18)
+size = Vector2(16, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfy66"]
 radius = 5.0
@@ -77,15 +31,11 @@ libraries = {
 visible = false
 healthComponent = NodePath("../HealthComponent")
 
-[node name="InputManager" parent="." instance=ExtResource("3_opin7")]
-
-[node name="DashManager" type="Node" parent="."]
-
-[node name="VelocityComponent" parent="." instance=ExtResource("3_gutml")]
-maxSpeed = 150.0
+[node name="PlayerInputManager" parent="." instance=ExtResource("3_nti0u")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_thtjx")]
 maxHealth = 50
+damageFloat = true
 
 [node name="EntityShadowComponent" parent="." instance=ExtResource("4_y3iy7")]
 visible = false
@@ -93,19 +43,20 @@ visible = false
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponent", "hurtboxCollision") instance=ExtResource("3_wlw7m")]
 healthComponent = NodePath("../HealthComponent")
 hurtboxCollision = NodePath("CollisionShape2D")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 unique_name_in_owner = true
-position = Vector2(-0.5, -9)
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_c8fml")
-debug_color = Color(0.639216, 0, 0, 0.419608)
+debug_color = Color(1, 1, 1, 0.42)
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="body" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -16)
-texture = ExtResource("8_oc5tv")
-hframes = 11
+texture = ExtResource("7_v3xvt")
+hframes = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 unique_name_in_owner = true
@@ -116,22 +67,15 @@ texture = ExtResource("1_tnr52")
 
 [node name="WeaponRoot" type="Node2D" parent="Visuals"]
 unique_name_in_owner = true
-position = Vector2(0, -7)
+position = Vector2(0, -13)
 script = ExtResource("8_hqerm")
 
 [node name="weapon" type="Sprite2D" parent="Visuals/WeaponRoot"]
-position = Vector2(9, 0)
-texture = ExtResource("11_djeon")
+position = Vector2(16, 2.38419e-07)
+scale = Vector2(0.195313, 0.0703125)
+texture = ExtResource("1_tnr52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_mfy66")
-debug_color = Color(1, 1, 1, 0.42)
 metadata/_edit_lock_ = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = -48.0
-offset_top = -56.0
-offset_right = -8.0
-offset_bottom = -33.0
-text = "test"

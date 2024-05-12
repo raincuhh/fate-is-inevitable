@@ -4,7 +4,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y4svy"]
 shader = ExtResource("1_kou05")
-shader_parameter/vignette_intensity = 0.295
+shader_parameter/vignette_intensity = 0.995
 shader_parameter/vignette_opacity = 0.274
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 

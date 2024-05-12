@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/ui/floatText.gd" id="1_dn1k3"]
 
-[node name="DamageFloatText" type="Marker2D"]
+[node name="FloatText" type="Marker2D"]
 script = ExtResource("1_dn1k3")
 
 [node name="Label" type="Label" parent="."]

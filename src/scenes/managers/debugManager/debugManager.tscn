@@ -42,6 +42,18 @@ layout_mode = 2
 layout_mode = 2
 text = "fps: placeholder"
 
+[node name="playerVelocity" type="Label" parent="visual/MarginContainer/HBoxContainer/display"]
+layout_mode = 2
+text = "velocity: placeholder"
+
+[node name="playerInput" type="Label" parent="visual/MarginContainer/HBoxContainer/display"]
+layout_mode = 2
+text = "input: placeholder"
+
+[node name="cameraOffset" type="Label" parent="visual/MarginContainer/HBoxContainer/display"]
+layout_mode = 2
+text = "cameraOffset: placeholder"
+
 [node name="justifyBetween" type="Control" parent="visual/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3

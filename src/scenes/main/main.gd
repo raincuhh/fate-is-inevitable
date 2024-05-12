@@ -11,17 +11,16 @@ func _ready():
 	#var player = nodeUtils.getPlayer()
 	#var camera = get_viewport().get_camera_2d()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("debug"):
-		toggleDebugConsole()
+		toggle_debug_console()
 
-func toggleDebugConsole():
+func toggle_debug_console():
 	match debugManager.visible:
 		false:
 			debugManager.visible = true
 		true:
 			debugManager.visible = false
 
-
-func toggleEsc():
+func toggle_escape():
 	pass

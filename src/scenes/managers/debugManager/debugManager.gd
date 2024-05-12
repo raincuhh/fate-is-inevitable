@@ -20,13 +20,13 @@ func _process(delta):
 		var fps = Engine.get_frames_per_second()
 		fpsLabel.text = "fps: %s" % fps
 		playerVelocity.text = "velocity: %.2f, %.2f" % [player.velocity.x, player.velocity.y]
-		#var input = player.get_node("PlayerInputManager").input
-		#playerInput.text = "input: %.2f, %.2f" % [input.x, input.y] 
+		var input = player.get_node("InputManager").input
+		playerInput.text = "input: %.2f, %.2f" % [input.x, input.y] 
 		var mainCameraOffset = main.get_node("GameCamera").camera.offset
 		cameraOffset.text = "offset: %.2f, %.2f" % [mainCameraOffset.x, mainCameraOffset.y]
 
 func _on_remove_player_hp_pressed():
 	var playerHealthComponent = player.get_node("HealthComponent")
-#	if player:
-#		playerHealthComponent.damage(10)
-#		player.get_health_test()
+	if player:
+		playerHealthComponent.damage(10)
+		player.get_health_test()

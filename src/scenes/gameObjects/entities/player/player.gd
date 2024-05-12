@@ -29,10 +29,10 @@ func _ready():
 
 func _process(delta):
 	stateMachine.update()
-	
 	velocityComponent.move(player, delta)
+	
 	var localMouse = get_local_mouse_position()
-	var angle = snappedf(localMouse.angle(), PI/2) / (PI/2) # 4 is 8 directions #2 is 4 directions
+	var angle = snappedf(localMouse.angle(), PI/2) / (PI/2) #4 is 8 directions, 2 is 4 directions
 	angle = wrapi(int(angle), 0, 4)
 	label.text = "angle: %s" % angle
 
@@ -42,18 +42,18 @@ func StateNormal():
 	var inputVector: Vector2 = inputManager.get_input()
 	var direction = inputVector.normalized()
 	
-	if inputVector == Vector2.ZERO:
-		velocityComponent.decelerate()
-		#animationPlayer.play("idle")
-	else:
+	if inputVector != Vector2.ZERO:
 		velocityComponent.accelerate_in_direction(direction)
 		animationPlayer.play("run")
+	else:
+		velocityComponent.decelerate()
+		animationPlayer.play("idle")
 	
 	if Input.is_action_just_pressed("dash"): #&& dashManager.canDash:
 		stateMachine.change_state(StateDash)
 
 func StateDash():
-	velocity = Vector2(0, 0)
+	pass
 
 func get_health_test():
 	var health = healthComponent.get_health()

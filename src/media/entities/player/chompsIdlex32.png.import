@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtt44lwjb6s8y"
-path="res://.godot/imported/chompsx32.png-27cb4f8a7b863fd2da14fa6d66625f72.ctex"
+uid="uid://dae7pwn3jvcv2"
+path="res://.godot/imported/chompsIdlex32.png-1a900d09b1cf43d6713a625eb7484e81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/media/entities/player/chompsx32.png"
-dest_files=["res://.godot/imported/chompsx32.png-27cb4f8a7b863fd2da14fa6d66625f72.ctex"]
+source_file="res://src/media/entities/player/chompsIdlex32.png"
+dest_files=["res://.godot/imported/chompsIdlex32.png-1a900d09b1cf43d6713a625eb7484e81.ctex"]
 
 [params]
 

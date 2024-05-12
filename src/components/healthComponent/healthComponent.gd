@@ -12,6 +12,8 @@ var hasDied: bool = false
 
 signal died
 
+#TODO, if an entity gets hit within a 0.5 scope, instead of making a new float, add it onto the current float damage
+
 func _ready():
 	init_health()
 
@@ -29,17 +31,8 @@ func update_health():
 		emit_signal("died")
 		currentHealth += 1 #for testing
 
-
-func damage(damage: int):
-	currentHealth -= damage
-	#if damageFloat:
-		#TODO, if an entity gets hit within a 0.5 scope, instead of making a new float, add it onto the current float damage
-	#	var floatingTextInstance = floatingText.instantiate()
-	#	floatingTextInstance.damage = amount
-	#	floatingTextInstance.position = healthComponent.global_position
-	#	var instancePos = floatingTextInstance.position
-	#	print(instancePos)
-	#	floatingTextInstance.spawnPosition = healthComponent.global_position
-	#	mainForeground.add_child(floatingTextInstance)
-	#	
+func damage(dmg: int):
+	currentHealth -= dmg
+	if damageFloat:
+		FloatTextUtil.createFloatText(healthComponent.global_position, dmg)
 	update_health()

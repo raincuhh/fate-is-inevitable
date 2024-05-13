@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvnd6weqfesau"]
 
-[ext_resource type="Script" path="res://src/components/playerDeathAnimationComponent/playerDeathAnimationComponent.gd" id="1_k7xyc"]
+[ext_resource type="Script" path="res://src/components/playerDeathAnimationComponent.gd" id="1_k7xyc"]
 
 [sub_resource type="Animation" id="Animation_wr04o"]
 resource_name = "toBlack"

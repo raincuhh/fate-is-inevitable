@@ -29,10 +29,10 @@ script = ExtResource("1_dlv1f")
 
 [node name="Vignette" parent="." instance=ExtResource("2_ntyaa")]
 
+[node name="PlayerUI" parent="." instance=ExtResource("4_67h4l")]
+
 [node name="DebugManager" parent="." instance=ExtResource("3_uddji")]
 visible = false
-
-[node name="PlayerUI" parent="." instance=ExtResource("4_67h4l")]
 
 [node name="UiManager" type="Node" parent="."]
 

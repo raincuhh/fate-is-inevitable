@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var playerInput = $visual/MarginContainer/HBoxContainer/display/PlayerInput
 @onready var cameraOffset = $visual/MarginContainer/HBoxContainer/display/CameraOffset
 
+@onready var removePlayerHpAmount = $visual/MarginContainer/HBoxContainer/commands/HBoxContainer/PlayerHpAmount
 
 
 var player = null
@@ -24,10 +25,10 @@ func _process(delta):
 		var input = player.get_node("InputManager").input
 		playerInput.text = "input: %.2f, %.2f" % [input.x, input.y] 
 		var mainCameraOffset = main.get_node("MainCamera").camera.offset
-		cameraOffset.text = "offset: %.2f, %.2f" % [mainCameraOffset.x, mainCameraOffset.y]
+		cameraOffset.text = "camera offset: %.2f, %.2f" % [mainCameraOffset.x, mainCameraOffset.y]
 
 func _on_remove_player_hp_pressed():
 	var playerHealthComponent = player.get_node("HealthComponent")
-	if player:
-		playerHealthComponent.damage(10)
+	if player && !removePlayerHpAmount.text.is_empty():
+		playerHealthComponent.damage(int(removePlayerHpAmount.text))
 		player.get_health_test()

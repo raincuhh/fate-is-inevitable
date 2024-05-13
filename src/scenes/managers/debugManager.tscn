@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp4npuuxewybj"]
+[gd_scene load_steps=5 format=3 uid="uid://cp4npuuxewybj"]
 
 [ext_resource type="Script" path="res://src/scenes/managers/debugManager.gd" id="1_c7di6"]
+[ext_resource type="Shader" path="res://src/shaders/font/solidShadowOutline.gdshader" id="2_6uka4"]
+[ext_resource type="Theme" uid="uid://bh65lv32qeej" path="res://src/themes/retroFontTheme.tres" id="3_nq4vn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chtqg"]
+shader = ExtResource("2_6uka4")
 
 [node name="DebugManager" type="CanvasLayer"]
 script = ExtResource("1_c7di6")
@@ -39,22 +44,30 @@ layout_mode = 2
 
 [node name="display" type="VBoxContainer" parent="visual/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = -6
+theme_override_constants/separation = -2
 
 [node name="Fps" type="Label" parent="visual/MarginContainer/HBoxContainer/display"]
+material = SubResource("ShaderMaterial_chtqg")
 layout_mode = 2
+theme = ExtResource("3_nq4vn")
 text = "fps: placeholder"
 
 [node name="PlayerVelocity" type="Label" parent="visual/MarginContainer/HBoxContainer/display"]
+material = SubResource("ShaderMaterial_chtqg")
 layout_mode = 2
+theme = ExtResource("3_nq4vn")
 text = "velocity: placeholder"
 
 [node name="PlayerInput" type="Label" parent="visual/MarginContainer/HBoxContainer/display"]
+material = SubResource("ShaderMaterial_chtqg")
 layout_mode = 2
+theme = ExtResource("3_nq4vn")
 text = "input: placeholder"
 
 [node name="CameraOffset" type="Label" parent="visual/MarginContainer/HBoxContainer/display"]
+material = SubResource("ShaderMaterial_chtqg")
 layout_mode = 2
+theme = ExtResource("3_nq4vn")
 text = "cameraOffset: placeholder"
 
 [node name="justifyBetween" type="Control" parent="visual/MarginContainer/HBoxContainer"]
@@ -64,8 +77,17 @@ size_flags_horizontal = 3
 [node name="commands" type="VBoxContainer" parent="visual/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="removePlayerHp" type="Button" parent="visual/MarginContainer/HBoxContainer/commands"]
+[node name="HBoxContainer" type="HBoxContainer" parent="visual/MarginContainer/HBoxContainer/commands"]
 layout_mode = 2
-text = "-10 playerHp"
 
-[connection signal="pressed" from="visual/MarginContainer/HBoxContainer/commands/removePlayerHp" to="." method="_on_remove_player_hp_pressed"]
+[node name="PlayerHpAmount" type="LineEdit" parent="visual/MarginContainer/HBoxContainer/commands/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "amount"
+expand_to_text_length = true
+
+[node name="RemovePlayerHp" type="Button" parent="visual/MarginContainer/HBoxContainer/commands/HBoxContainer"]
+layout_mode = 2
+text = "remove player hp"
+
+[connection signal="pressed" from="visual/MarginContainer/HBoxContainer/commands/HBoxContainer/RemovePlayerHp" to="." method="_on_remove_player_hp_pressed"]

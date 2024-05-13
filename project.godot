@@ -38,8 +38,7 @@ enabled=PackedStringArray()
 [file_customization]
 
 folder_colors={
-"res://src/scenes/": "purple",
-"res://src/shaders/": "gray"
+"res://src/scenes/": "purple"
 }
 
 [input]

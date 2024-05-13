@@ -1,15 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://cikndjh14e0f5"]
+[gd_scene load_steps=19 format=3 uid="uid://cikndjh14e0f5"]
 
 [ext_resource type="Script" path="res://src/scenes/gameObjects/entities/player/player.gd" id="1_d3inn"]
 [ext_resource type="Texture2D" uid="uid://dae7pwn3jvcv2" path="res://src/media/gameObjects/entities/player/chompsIdlex32.png" id="2_lsg1i"]
-[ext_resource type="PackedScene" uid="uid://bj4xanqj67b6g" path="res://src/components/healthComponent/healthComponent.tscn" id="2_thtjx"]
 [ext_resource type="Texture2D" uid="uid://dtt44lwjb6s8y" path="res://src/media/gameObjects/entities/player/chompsRunningx32.png" id="3_63bk2"]
-[ext_resource type="PackedScene" uid="uid://bllaqrtnddkw2" path="res://src/components/velocityComponent/velocityComponent.tscn" id="3_gutml"]
 [ext_resource type="PackedScene" uid="uid://0rjr8ud48to" path="res://src/scenes/managers/inputManager.tscn" id="3_opin7"]
-[ext_resource type="PackedScene" uid="uid://bfu3lcek2efj1" path="res://src/components/hurtBoxComponent/hurtboxComponent.tscn" id="3_wlw7m"]
-[ext_resource type="PackedScene" uid="uid://bm01ehreg60y0" path="res://src/components/entityShadowComponent/entityShadowComponent.tscn" id="4_y3iy7"]
-[ext_resource type="PackedScene" uid="uid://dvnd6weqfesau" path="res://src/components/playerDeathAnimationComponent/playerDeathAnimationComponent.tscn" id="6_rgck3"]
+[ext_resource type="PackedScene" uid="uid://dvnd6weqfesau" path="res://src/components/playerDeathAnimationComponent.tscn" id="4_bx1ld"]
+[ext_resource type="PackedScene" uid="uid://k1vm72wsjl3y" path="res://src/scenes/managers/weaponManager.tscn" id="6_acbbl"]
+[ext_resource type="PackedScene" uid="uid://bllaqrtnddkw2" path="res://src/components/velocityComponent.tscn" id="7_3kati"]
+[ext_resource type="PackedScene" uid="uid://bj4xanqj67b6g" path="res://src/components/healthComponent.tscn" id="8_5iiiw"]
+[ext_resource type="PackedScene" uid="uid://bm01ehreg60y0" path="res://src/components/entityShadowComponent.tscn" id="9_6nwny"]
 [ext_resource type="PackedScene" uid="uid://ccvcrj0vc50e6" path="res://src/scenes/gameObjects/guns/weapon.tscn" id="9_pvr73"]
+[ext_resource type="FontFile" uid="uid://b21hls5al1rs2" path="res://src/media/fonts/retroPixelartFont/arcade/retro-pixel-arcade.ttf" id="11_61yo4"]
+[ext_resource type="PackedScene" uid="uid://bfu3lcek2efj1" path="res://src/components/hurtboxComponent.tscn" id="11_kxtjc"]
 
 [sub_resource type="Animation" id="Animation_upsin"]
 length = 0.001
@@ -119,7 +121,7 @@ libraries = {
 "": SubResource("AnimationLibrary_bx5lr")
 }
 
-[node name="PlayerDeathAnimationComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("6_rgck3")]
+[node name="PlayerDeathAnimationComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_bx1ld")]
 visible = false
 healthComponent = NodePath("../HealthComponent")
 
@@ -127,13 +129,15 @@ healthComponent = NodePath("../HealthComponent")
 
 [node name="DashManager" type="Node" parent="."]
 
-[node name="VelocityComponent" parent="." instance=ExtResource("3_gutml")]
+[node name="WeaponManager" parent="." instance=ExtResource("6_acbbl")]
+
+[node name="VelocityComponent" parent="." instance=ExtResource("7_3kati")]
 maxSpeed = 150.0
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_thtjx")]
-maxHealth = 50
+[node name="HealthComponent" parent="." instance=ExtResource("8_5iiiw")]
+maxHealth = 12
 
-[node name="EntityShadowComponent" parent="." instance=ExtResource("4_y3iy7")]
+[node name="EntityShadowComponent" parent="." instance=ExtResource("9_6nwny")]
 visible = false
 
 [node name="Visuals" type="Node2D" parent="."]
@@ -150,7 +154,7 @@ position = Vector2(0, -8)
 [node name="Weapon" parent="Visuals/WeaponRoot" node_paths=PackedStringArray("rootEntity") instance=ExtResource("9_pvr73")]
 rootEntity = NodePath("../../..")
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponent", "hurtboxCollision") instance=ExtResource("3_wlw7m")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponent", "hurtboxCollision") instance=ExtResource("11_kxtjc")]
 visible = false
 healthComponent = NodePath("../HealthComponent")
 hurtboxCollision = NodePath("CollisionShape2D")
@@ -172,4 +176,5 @@ offset_left = -48.0
 offset_top = -56.0
 offset_right = -8.0
 offset_bottom = -33.0
+theme_override_fonts/font = ExtResource("11_61yo4")
 text = "test"

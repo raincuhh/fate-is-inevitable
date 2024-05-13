@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bm01ehreg60y0"]
 
-[ext_resource type="Script" path="res://src/components/entityShadowComponent/entityShadowComponent.gd" id="1_imtuf"]
+[ext_resource type="Script" path="res://src/components/entityShadowComponent.gd" id="1_1dw2x"]
 
 [sub_resource type="Gradient" id="Gradient_5urnt"]
 offsets = PackedFloat32Array(0.711712, 0.792793)
@@ -13,7 +13,7 @@ fill_from = Vector2(0.487179, 0.474359)
 fill_to = Vector2(0.333333, 0.149573)
 
 [node name="EntityShadowComponent" type="Node2D"]
-script = ExtResource("1_imtuf")
+script = ExtResource("1_1dw2x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1.19209e-07)

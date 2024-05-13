@@ -1,12 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://mxf5bpjwugvm"]
+[gd_scene load_steps=10 format=3 uid="uid://mxf5bpjwugvm"]
 
 [ext_resource type="Script" path="res://src/scenes/ui/player/playerUi.gd" id="1_el1yk"]
 [ext_resource type="Texture2D" uid="uid://dt25iiyi2lv3l" path="res://src/media/ui/healthBar/healthBarUnder.png" id="2_dn20t"]
 [ext_resource type="Texture2D" uid="uid://cwyrkkm8vk4dc" path="res://src/media/ui/healthBar/healthBarOver.png" id="3_8leei"]
 [ext_resource type="FontFile" uid="uid://b21hls5al1rs2" path="res://src/media/fonts/retroPixelartFont/arcade/retro-pixel-arcade.ttf" id="4_cxwn3"]
 [ext_resource type="Shader" path="res://src/shaders/font/solidShadowOutline.gdshader" id="4_hqwyw"]
+[ext_resource type="Theme" uid="uid://bh65lv32qeej" path="res://src/themes/retroFontTheme.tres" id="5_j4dmf"]
+[ext_resource type="Texture2D" uid="uid://c36l8lbv66bgb" path="res://src/media/ui/coins/placeholderCoin.png" id="7_b1bw2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgr18"]
+shader = ExtResource("4_hqwyw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jv7t"]
 shader = ExtResource("4_hqwyw")
 
 [node name="PlayerUI" type="CanvasLayer"]
@@ -19,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -31,16 +37,18 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="Control/MarginContainer"]
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="Control/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -22.0
+offset_top = -19.0
 offset_right = 115.0
 grow_vertical = 0
 nine_patch_stretch = true
@@ -53,14 +61,36 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -22.0
+offset_top = -18.0
 offset_right = 115.0
 grow_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
+theme = ExtResource("5_j4dmf")
 theme_override_fonts/font = ExtResource("4_cxwn3")
 theme_override_font_sizes/font_size = 8
-text = "50/50"
+text = "9999/9999"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Control/HBoxContainer"]
+material = SubResource("ShaderMaterial_2jv7t")
+layout_mode = 2
+theme = ExtResource("5_j4dmf")
+text = "999"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_b1bw2")

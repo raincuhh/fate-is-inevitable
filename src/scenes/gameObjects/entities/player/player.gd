@@ -27,18 +27,18 @@ func _ready():
 	
 	main = NodeUtils.get_main()
 	var playerUi = main.get_node("PlayerUI")
-	playerUi.update()
+	playerUi.update_health_ui()
 	
 	get_health_test()
 
 func _process(delta):
 	stateMachine.update()
-	velocityComponent.move(player, delta)
+	velocityComponent.move(player)
 	
 	var localMouse = get_local_mouse_position()
 	var angle = snappedf(localMouse.angle(), PI/2) / (PI/2) #4 is 8 directions, 2 is 4 directions
 	angle = wrapi(int(angle), 0, 4)
-	label.text = "angle: %s" % angle
+	label.text = "angle:%s" % angle
 
 
 func StateNormal():

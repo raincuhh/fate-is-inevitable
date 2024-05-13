@@ -9,7 +9,7 @@ var Velocity: Vector2
 
 #TODO - add methods to increase velocity for a period of time with a percent based multiplier (for dashing)
 
-func move(entity: CharacterBody2D, delta):
+func move(entity: CharacterBody2D):
 	entity.velocity = Velocity
 	entity.move_and_slide()
 

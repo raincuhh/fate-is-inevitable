@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bh65lv32qeej"]
+
+[ext_resource type="FontFile" uid="uid://b21hls5al1rs2" path="res://src/media/fonts/retroPixelartFont/arcade/retro-pixel-arcade.ttf" id="1_l14wf"]
+
+[resource]
+default_font = ExtResource("1_l14wf")
+default_font_size = 8
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)

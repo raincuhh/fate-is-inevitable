@@ -12,10 +12,10 @@ func _ready():
 	player = NodeUtils.get_player()
 	playerHealthComponent = player.get_node("HealthComponent")
 	
-	playerHealthComponent.connect("healthChanged", update)
+	playerHealthComponent.connect("healthChanged", update_health_ui)
 	#update()
 
-func update():
+func update_health_ui():
 	
 	maxHealth = playerHealthComponent.get_max_health()
 	currentHealth = playerHealthComponent.get_health()

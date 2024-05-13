@@ -1,9 +1,26 @@
-[gd_scene format=3 uid="uid://diamrke2ecwxk"]
+[gd_scene load_steps=4 format=3 uid="uid://diamrke2ecwxk"]
+
+[ext_resource type="Texture2D" uid="uid://c67lge8fngxr8" path="res://src/media/gameObjects/bullets/bulletPlaceholder.png" id="1_7c1o3"]
+[ext_resource type="PackedScene" uid="uid://ccvcrj0vc50e6" path="res://src/scenes/gameObjects/guns/weapon.tscn" id="2_kh84r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2gce"]
 
 [node name="Dummy" type="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_r2gce")
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Body" type="Sprite2D" parent="Visuals"]
+z_index = 2
+position = Vector2(0, -16)
+texture = ExtResource("1_7c1o3")
+
+[node name="WeaponRoot" type="Node2D" parent="Visuals"]
+
+[node name="Weapon" parent="Visuals/WeaponRoot" node_paths=PackedStringArray("rootEntity") instance=ExtResource("2_kh84r")]
+position = Vector2(0, -16)
+rootEntity = NodePath("../../..")
+isEnemy = true

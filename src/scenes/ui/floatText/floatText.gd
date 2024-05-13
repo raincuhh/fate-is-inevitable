@@ -24,16 +24,14 @@ func _ready():
 	#	"damage":
 	#		#size = Vector2(2.5, 2.5)
 	#		label.set("theme_override_colors/font_color", Color("ae2334"))
-	#		
-	
-	var xRng = rng.randf_range(-20.0, 20.0)
-	var yRng = rng.randf_range(-10.0, 10.0)
 	
 	randomize()
-	tween.tween_property(self, "scale", Vector2(size), 0.35).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position", Vector2(spawnPosition.x + xRng, spawnPosition.y + -20.0 + yRng), 0.35).set_ease(Tween.EASE_OUT)
-	tween.parallel().tween_property(self, "scale", Vector2(), 0.5)
 	
+	var xRng = rng.randf_range(-5.0, 5.0)
+	
+	tween.tween_property(self, "scale", Vector2(size), 0.35).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", Vector2(spawnPosition.x + xRng, spawnPosition.y + -20.0), 0.35).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(self, "scale", Vector2(), 0.5)
 	tween.finished.connect(on_finish)
 
 func on_finish():

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccvcrj0vc50e6"]
 
 [ext_resource type="Script" path="res://src/scenes/gameObjects/guns/weapon.gd" id="1_arq62"]
-[ext_resource type="Texture2D" uid="uid://370boi163rfl" path="res://src/media/gameObjects/guns/seraphim/seraphim.png" id="2_oocso"]
+[ext_resource type="Texture2D" uid="uid://dt3sv4wewnlkw" path="res://src/media/gameObjects/guns/placeholder/placeholderGun.png" id="2_u8xmh"]
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_arq62")
@@ -9,4 +9,4 @@ script = ExtResource("1_arq62")
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(13, 0)
-texture = ExtResource("2_oocso")
+texture = ExtResource("2_u8xmh")

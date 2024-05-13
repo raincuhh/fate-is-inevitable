@@ -132,15 +132,17 @@ healthComponent = NodePath("../HealthComponent")
 [node name="WeaponManager" parent="." instance=ExtResource("6_acbbl")]
 
 [node name="VelocityComponent" parent="." instance=ExtResource("7_3kati")]
-maxSpeed = 150.0
+maxSpeed = 125.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_5iiiw")]
+position = Vector2(0, -13)
 maxHealth = 12
 
 [node name="EntityShadowComponent" parent="." instance=ExtResource("9_6nwny")]
 visible = false
 
 [node name="Visuals" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Body" type="Sprite2D" parent="Visuals"]
 z_index = 2

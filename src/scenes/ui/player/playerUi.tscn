@@ -45,12 +45,8 @@ metadata/_edit_lock_ = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="Control/MarginContainer/Control"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -19.0
 offset_right = 115.0
-grow_vertical = 0
+offset_bottom = 19.0
 nine_patch_stretch = true
 texture_under = ExtResource("2_dn20t")
 texture_progress = ExtResource("3_8leei")
@@ -58,12 +54,8 @@ texture_progress = ExtResource("3_8leei")
 [node name="HealthLabel" type="Label" parent="Control/MarginContainer/Control"]
 material = SubResource("ShaderMaterial_tgr18")
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -18.0
 offset_right = 115.0
-grow_vertical = 0
+offset_bottom = 18.0
 theme = ExtResource("5_j4dmf")
 theme_override_fonts/font = ExtResource("4_cxwn3")
 theme_override_font_sizes/font_size = 8

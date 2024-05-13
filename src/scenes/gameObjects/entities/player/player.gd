@@ -6,8 +6,8 @@ extends CharacterBody2D
 @onready var healthComponent = $HealthComponent
 @onready var inputManager = $InputManager
 @onready var dashManager = $DashManager
-#@onready var weapon = $Visuals/WeaponRoot/Weapon
 @onready var animationPlayer = $AnimationPlayer
+@onready var weapon = $Visuals/WeaponRoot/Weapon
 
 @onready var player = $"."
 @onready var body = $Visuals/Body
@@ -39,6 +39,11 @@ func _process(delta):
 	var angle = snappedf(localMouse.angle(), PI/2) / (PI/2) #4 is 8 directions, 2 is 4 directions
 	angle = wrapi(int(angle), 0, 4)
 	label.text = "angle:%s" % angle
+	
+	#var direction = Vector2.RIGHT.rotated(global_rotation)#.rotated(deg_to_rad(2.0))
+	#print(direction)
+	if Input.is_action_just_pressed("fire"):
+		weapon.fire()
 
 
 func StateNormal():

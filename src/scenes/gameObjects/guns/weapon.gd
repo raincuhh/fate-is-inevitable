@@ -7,7 +7,7 @@ extends Node2D
 
 
 @onready var main = NodeUtils.get_main()
-@onready var bullet = preload("res://src/prototyping/gameObjects/bullets/projectilePrototype.tscn")
+@onready var bullet = preload("res://src/scenes/gameObjects/bullets/bullet.tscn")
 
 var player = null
 
@@ -15,33 +15,34 @@ func _ready():
 	player = NodeUtils.get_player()
 
 func _process(_delta):
-	var pos: Vector2
+	var target: Vector2
 	
 	if isEnemy == true:
-		pos = player.global_position
+		target = player.global_position
 	else:
-		pos = get_global_mouse_position()
+		target = get_global_mouse_position()
 	
-	look_at(pos)
+	look_at(target)
 	
-	match_weapon_flip(pos)
-	match_z_index(pos)
+	match_weapon_flip(target)
+	match_z_index(target)
 	
 
 func fire():
 	var instance = bullet.instantiate()
-	#instance.spawnPosition = rootEntity.global_position
-	#instance.spawnRotation = global_rotation
+	instance.global_position = rootEntity.global_position
+	instance.rotation = rotation
+	instance.spawnPosition = weaponSprite.global_position
 	main.get_node("Bullets").add_child(instance)
 
-func match_weapon_flip(pos):
-	if pos.x > rootEntity.position.x:
+func match_weapon_flip(target):
+	if target.x > rootEntity.position.x:
 		weaponSprite.flip_v = false
-	elif pos.x < rootEntity.position.x:
+	elif target.x < rootEntity.position.x:
 		weaponSprite.flip_v = true
 
-func match_z_index(pos):
-	if pos.y > rootEntity.position.y:
+func match_z_index(target):
+	if target.y > rootEntity.position.y:
 		weaponSprite.z_index = 2
-	elif pos.y < rootEntity.position.y:
+	elif target.y < rootEntity.position.y:
 		weaponSprite.z_index = 1
